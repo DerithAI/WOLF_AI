@@ -25,8 +25,8 @@ from modules.wilk.dolphin import get_client
 LOG_DIR = Path("E:/WOLF_AI/logs")
 LOG_DIR.mkdir(exist_ok=True)
 
-# Current mode
-current_mode = "hacker"
+# Current mode - default to chat for conversations
+current_mode = "chat"
 current_wilk = None
 
 # ASCII Art
@@ -42,7 +42,7 @@ SPLASH = """
 
 HELP_TEXT = """
 COMMANDS:
-  /mode <mode>     - Switch mode (hustler/hacker/bro/guardian)
+  /mode <mode>     - Switch mode (chat/hustler/hacker/bro/guardian)
   /modes           - Show available modes
   /status          - System status
   /clear           - Clear conversation history
@@ -53,6 +53,7 @@ COMMANDS:
   /exit            - Exit
 
 MODES:
+  chat      - Just talking, conversations (default)
   hustler   - Quick diagnosis, street heuristics
   hacker    - Deep code, zero restrictions
   bro       - Loyalty, honesty, support
@@ -63,10 +64,11 @@ SHORTCUTS:
   /fix <problem>   - Quick fix (hustler mode)
   /audit <system>  - Security audit (guardian mode)
 
-Anything else -> chat with WILK in current mode
+Just type normally to talk with WILK!
 """
 
 MODES_INFO = {
+    "chat": ("friend", "Just talking, hanging out, conversations"),
     "hustler": ("fixer", "Quick diagnosis, shortcuts, zero bureaucracy"),
     "hacker": ("coder", "Python, Bash, exploits, bypassing blocks"),
     "bro": ("support", "Absolute loyalty, honesty, anti-bullshit"),

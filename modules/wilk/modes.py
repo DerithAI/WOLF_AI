@@ -152,6 +152,21 @@ class Guardian(WilkBase):
         return self.think(prompt, temperature=0.4)
 
 
+class Chat(WilkBase):
+    """
+    Chat Mode - Pure conversation, hanging out.
+
+    Just talking, no specific task focus.
+    """
+
+    def __init__(self):
+        super().__init__("chat", "friend", "chat")
+
+    def talk(self, message: str) -> str:
+        """Just talk."""
+        return self.think(message, temperature=0.8)
+
+
 # Factory function
 _wilk_modes = {
     "hustler": Hustler,
@@ -162,6 +177,8 @@ _wilk_modes = {
     "support": Bro,
     "guardian": Guardian,
     "security": Guardian,
+    "chat": Chat,
+    "friend": Chat,
     # Legacy Polish aliases
     "ogarniacz": Hustler,
     "technik": Hacker,
